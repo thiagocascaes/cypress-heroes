@@ -1,0 +1,15 @@
+{
+  "validUser": {
+    "username": "admin@test.com",
+    "password": "test123"
+  },
+  
+  "invalidUser": {
+    "username": "thiago@thiago.com.br",
+    "password": "test"
+  },
+
+  "createHero": {
+    "username": "Thiago"
+  }
+}
