@@ -7,10 +7,11 @@ class CreatePage {
             priceNumber: "[name='price']",
             fansNumber: "[name='fans']",
             savesNumber: "[name='saves']",
-            powersType: "[value='9']",
+            powersType: "[data-cy='powersSelect']",
             button: "button",
             usernameField: "[name='email']",
             passwordField: "[type='password']",
+            fileInput: "[data-cy='avatarFile']"
             
         }
 
@@ -35,10 +36,24 @@ class CreatePage {
         cy.get(this.selectorsList().priceNumber).type('99')
         cy.get(this.selectorsList().fansNumber).type('95')
         cy.get(this.selectorsList().savesNumber).type('98')
-        cy.get(this.selectorsList().powersType).click()
-        cy.get('.px-8').contains('button', 'Submit').click();
+        this.selectRandomPower()
+        cy.get(this.selectorsList().fileInput).selectFile('cypress/fixtures/avatar.jpg', { force : true} )
+        cy.get('.px-8').contains('button','Submit').click();
 
     }
+
+    selectRandomPower() {
+        cy.get(this.selectorsList().powersType)
+        .find('option')
+        .then(($option) => {
+            const count = $option.length;
+            const randomIndex = Math.floor(Math.random() * count);
+            const randomValue = $option[randomIndex].value;
+        cy.get(this.selectorsList().powersType).select(randomValue);
+        });
+    }
+
+
 
 }
 
