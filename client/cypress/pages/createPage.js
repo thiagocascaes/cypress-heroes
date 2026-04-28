@@ -26,7 +26,7 @@ class CreatePage {
     accessWithLogin(username, password) {
         cy.get(this.selectorsList().usernameField).type(username)
         cy.get(this.selectorsList().passwordField).type(password)
-        cy.get(this.selectorsList().button).eq(17).click()
+        cy.get('button').contains('Sign in').click();
 
     }
 
