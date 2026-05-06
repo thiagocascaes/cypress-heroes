@@ -11,8 +11,8 @@ class CreatePage {
             button: "button",
             usernameField: "[name='email']",
             passwordField: "[type='password']",
-            fileInput: "[data-cy='avatarFile']"
-            
+            fileInput: "[data-cy='avatarFile']",
+            trash: "[data-cy='trash']"
         }
 
         return selectors
@@ -51,6 +51,12 @@ class CreatePage {
             const randomValue = $option[randomIndex].value;
         cy.get(this.selectorsList().powersType).select(randomValue);
         });
+    }
+
+
+    selectTrash() {
+        cy.get(this.selectorsList().trash).eq(0).click()
+        cy.get('.gap-2 > .text-white').click()
     }
 
 
